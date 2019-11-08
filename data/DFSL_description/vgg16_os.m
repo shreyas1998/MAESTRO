@@ -207,5 +207,61 @@ Dataflow {
 		}
 }
 
+Layer FC4096 {
+Type: CONV
+Stride { X: 1, Y: 1 }
+Dimensions { K: 4096, C: 512, R: 7, S: 7, Y: 7, X: 7 }
+Dataflow {
+			TemporalMap(1,1) K;
+			TemporalMap(1,1) C;
+			SpatialMap(3,1) Y;
+			TemporalMap(19,16) X;
+			Cluster(16, P);
+			TemporalMap(3,1) Y;
+			SpatialMap(3,1) X;
+			TemporalMap(3,3) R;
+			TemporalMap(3,3) S;
+		}
+	}
+
+
+Layer FC4096_ {
+Type: CONV
+Stride { X: 1, Y: 1 }
+Dimensions { K: 4096, C: 4096, R: 1, S: 1, Y: 1, X: 1 }
+Dataflow {
+			TemporalMap(1,1) K;
+			TemporalMap(1,1) C;
+			SpatialMap(3,1) Y;
+			TemporalMap(19,16) X;
+			Cluster(16, P);
+			TemporalMap(3,1) Y;
+			SpatialMap(3,1) X;
+			TemporalMap(3,3) R;
+			TemporalMap(3,3) S;
+		}
+	}
+
+
+Layer FC1000 {
+Type: CONV
+Stride { X: 1, Y: 1 }
+Dimensions { K: 1000, C: 4096, R: 1, S: 1, Y: 1, X: 1 }
+Dataflow {
+			TemporalMap(1,1) K;
+			TemporalMap(1,1) C;
+			SpatialMap(3,1) Y;
+			TemporalMap(19,16) X;
+			Cluster(16, P);
+			TemporalMap(3,1) Y;
+			SpatialMap(3,1) X;
+			TemporalMap(3,3) R;
+			TemporalMap(3,3) S;
+		}
+	}
+
+
+
+
 
 }

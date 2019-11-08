@@ -206,4 +206,60 @@ Dimensions { K 512,C 512,R 3,S 3,Y 14,X 14 }
 }
 
 
+Layer FC4096 {
+Type: CONV
+Stride { X: 1, Y: 1 }
+Dimensions { K: 4096, C: 512, R: 7, S: 7, Y: 7, X: 7 }
+Dataflow {
+			TemporalMap(1,1) K;
+			TemporalMap(1,1) C;
+			SpatialMap(Sz(R), 1) Y;
+			TemporalMap(10,8) X;
+			Cluster(8, P);
+			SpatialMap(Sz(S), 1) X;
+			TemporalMap(Sz(R), Sz(R)) R;
+			TemporalMap(Sz(R), Sz(R)) S;
+		}
+	}
+
+
+Layer FC4096_ {
+Type: CONV
+Stride { X: 1, Y: 1 }
+Dimensions { K: 4096, C: 4096, R: 1, S: 1, Y: 1, X: 1 }
+Dataflow {
+			TemporalMap(1,1) K;
+			TemporalMap(1,1) C;
+			SpatialMap(Sz(R), 1) Y;
+			TemporalMap(10,8) X;
+			Cluster(8, P);
+			SpatialMap(Sz(S), 1) X;
+			TemporalMap(Sz(R), Sz(R)) R;
+			TemporalMap(Sz(R), Sz(R)) S;
+		}
+	}
+
+
+Layer FC1000 {
+Type: CONV
+Stride { X: 1, Y: 1 }
+Dimensions { K: 1000, C: 4096, R: 1, S: 1, Y: 1, X: 1 }
+Dataflow {
+			TemporalMap(1,1) K;
+			TemporalMap(1,1) C;
+			SpatialMap(Sz(R), 1) Y;
+			TemporalMap(10,8) X;
+			Cluster(8, P);
+			SpatialMap(Sz(S), 1) X;
+			TemporalMap(Sz(R), Sz(R)) R;
+			TemporalMap(Sz(R), Sz(R)) S;
+		}
+	}
+
+
+
+
+
+
+
 }
